@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 100%;
+            /* 合併儲存格: 拿掉 td 造成的邊角小空間，這個空間會讓圖片跑出來一點點 */
+            border-collapse: collapse;
+        }
+
+        #news {
+            width: 280px;
+            height: 460px;
+            border: 1px solid #999;
+            float: left;
+        }
+
+        #news h1 {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        #news th {
+            background: #3399ff;
+            font-size: 14px;
+            color: white;
+        }
+
+        #news td {
+            font-size: 12px;
+            /* 不用單位 px */
+            line-height: 2;
+        }
+
+        .odd {
+            background: #FFFFCC;
+        }
+
+        .even {
+            background: #ddd;
+        }
+
+        /* 圖片展示區 */
+        #photo {
+            width: 590px;
+            height: 460px;
+            border: 1px solid #999;
+            float: right;
+            background: #333;
+            color: #ff0;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        /* 這個是自己想的，題本沒說尺寸，所以要記住數字 */
+        #big {
+            width: 570px;
+            height: 340px;
+        }
+
+        #small {}
+    </style>
+</head>
+
+<body>
+    <div id="news">
+        <h1>最新消息</h1>
+        <table>
+            <tr>
+                <!-- 長的不一樣，要注意 -->
+                <th>主題</th>
+                <th>發布日期</th>
+            </tr>
+            <tr>
+                <td class="odd"><img src="../images/0201.png">公告全國技能競賽相關事宜</td>
+                <td>113/10/15</td>
+            </tr>
+            <tr>
+                <td class="even"><img src="../images/0201.png">公告即測即評及發證相關事宜</td>
+                <td>113/10/15</td>
+            </tr>
+            <tr>
+                <td class="odd"><img src="../images/0201.png">公告網頁設計修題相關事宜</td>
+                <td>113/10/15</td>
+            </tr>
+            <tr>
+                <td class="even"><img src="../images/0201.png">公告網路架設應檢相關事宜</td>
+                <td>113/10/15</td>
+            </tr>
+        </table>
+    </div>
+    <div id="photo">
+        <table>
+            <tr>
+                <td colspan="4">
+                    <img id="big" src="../images/0202A.png">
+                </td>
+            </tr>
+            <tr>
+                <td><img class="small" src="../images/0202B.png"></td>
+                <td><img class="small" src="../images/0203B.png"></td>
+                <td><img class="small" src="../images/0204B.png"></td>
+                <td><img class="small" src="../images/0205B.png"></td>
+            </tr>
+            <tr>
+                <td>第30屆倫敦奧運</td>
+                <td>許淑淨奪舉重銀牌</td>
+                <td>第26屆深圳世大運</td>
+                <td>第27屆喀山世大運</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 引入 jQuery -->
+    <script src="../others/jquery-2.1.4.min.js"></script>
+    <script>
+        // 第一個方法 原生 js
+        // 1. 先抓大圖、小圖元素
+        const big = document.querySelector('#big')
+        const imgs = document.querySelectorAll('.small')
+        console.log(big, imgs)
+
+        // 2. 對小圖做循環迭代的動作
+        imgs.forEach(function (img, index) {
+            // console.log(img, index)  // ←這個步驟是去打印看index怎麼顯示
+            // 3. 點小圖抽換大圖的路徑
+            img.onclick = function () {
+                big.src = `../images/020${index + 2}A.png`
+                // index=0 → 0+2=2 → 0202A.png
+            }
+        })
+
+        console.log('------------------------------------------------')
+
+        // 方法二 jQuery
+        // $() → 起手式，一個叫 $() 的函式
+        $('.small').each(function (index, img) {
+            $(img).on('click', function () {
+                // .attr('屬性名稱', '設定值')
+                $('#big').attr('src', `../images/020${index + 2}A.png`)
+            })
+        })
+
+    </script>
+</body>
+
+</html>

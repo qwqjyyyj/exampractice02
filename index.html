@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>勞動部勞動力發展署─運動廣場連結網</title>
+    <style>
+        body {
+            background-color: #42413C;
+        }
+
+        table {
+            width: 100%;
+            text-align: center;
+            /* 合併儲存格: 拿掉 td 造成的邊角小空間，這個空間會讓圖片跑出來一點點 */
+            border-collapse: collapse;
+        }
+
+        /* 不計分，多一個知識 */
+        /* 移除圖片多出來的空間 */
+        table td {
+            padding: 0;
+        }
+
+        #main {
+            width: 1024px;
+            height: 768px;
+            margin: auto;
+            background: #fff;
+        }
+
+        #top {
+            width: 1024px;
+            height: 90px;
+            background: lightblue;
+        }
+
+        .logo {
+            width: 180px;
+            height: 90px;
+        }
+
+        .title {
+            font-size: 52px;
+            color: #fff;
+            font-family: "標楷體";
+            text-shadow: 10px 10px 15px #333;
+        }
+
+        #menu {
+            width: 1024px;
+            height: 25px;
+            background: lightgreen;
+        }
+
+        #menu a {
+            color: #000;
+            background: #eee;
+            text-decoration: none;
+            display: block;
+        }
+
+        #menu a:hover {
+            font-size: 14px;
+            font-weight: bold;
+            color: #f00;
+            background: #ff0;
+            /* 可寫可不寫，本來連結就會讓游標轉成手指 */
+            /* cursor: pointer; */
+        }
+
+        /* 注意一下 content */
+        #content {
+            /* box-sizing 可以讓 padding 算在 width 裡面 */
+            box-sizing: border-box;
+            width: 1024px;
+            height: calc(768px - 90px - 25px - 45px);
+            padding: 20px;
+            background: #fff;
+            color: #000;
+            font-size: 14px;
+
+            /* 另一個寫法
+            width: calc(1024px - 40px);
+            height: calc(768px - 90px - 25px - 45px - 40px);
+            background: lightcyan; 
+            */
+        }
+
+        iframe {
+            /* 40px 是指 padding 的 左+右 */
+            width: calc(1024px - 40px);
+            /* 40px 是指 padding 的 上+下 */
+            height: calc(768px - 90px - 25px - 45px - 40px);
+        }
+
+        #footer {
+            width: 1024px;
+            height: 45px;
+            background: #CCCCCC;
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="top">
+            <table>
+                <tr>
+                    <td class="logo">
+                        <a href="./index.html">
+                            <img src="./images/logo.png" alt="運動廣場連結網網-回首頁" title="運動廣場連結網網-回首頁">
+                        </a>
+                    </td>
+                    <td class="title">運動廣場連結網</td>
+                </tr>
+            </table>
+        </div>
+        <div id="menu">
+            <!-- table-layout: fixed 可以讓所有 td 平均分配空間，滑鼠移過去就不會抖動 -->
+            <table style="table-layout: fixed;">
+                <tr>
+                    <td><a href="./index.html">首頁</a></td>
+                    <td><a href="./results/health.html" target="iframe">健康天地</a></td>
+                    <td><a href="./results/basketball.html" target="iframe">籃球介紹</a></td>
+                    <td><a href="./results/baseball.html" target="iframe">棒球介紹</a></td>
+                    <td><a href="./results/swimming.html" target="iframe">游泳介紹</a></td>
+                    <td><a href="./results/msgboard.html" target="iframe">訪客留言</a></td>
+                    <td><a href="./results/reference.html" target="iframe">資料來源</a></td>
+                </tr>
+            </table>
+        </div>
+        <div id="content">
+            <iframe src="./results/main.html" frameborder="0" name="iframe"></iframe>
+        </div>
+        <div id="footer">
+            網頁設計及維護：02qwqjyyyj<br>
+            最近更新日期：2024/10/15
+        </div>
+    </div>
+
+</body>
+
+</html>
